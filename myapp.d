@@ -1,0 +1,1 @@
+myapp.o: myapp.cpp
