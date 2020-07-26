@@ -46,9 +46,13 @@ int main() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    // Surface
+    SDL_Surface* screenSurface = NULL;
+
+
 
     // Square
-    SDL_Rect rect = {0, 0, 100, 100}; // x, y, width, height
+    //SDL_Rect rect = {0, 0, 100, 100}; // x, y, width, height
 
     // Game loop
     bool quit = false;
@@ -61,8 +65,12 @@ int main() {
             }
         }
         // animations
-        
-        SDL_GL_SwapWindow(window);
+        screenSurface = SDL_GetWindowSurface(window);
+        SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format,0xAA,0xFF,0xFF));
+        SDL_UpdateWindowSurface(window);
+
+       glClear(GL_COLOR_BUFFER_BIT);
+        //SDL_GL_SwapWindow(window);
     }
 
     // Clean up
